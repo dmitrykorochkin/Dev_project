@@ -15,12 +15,20 @@ const modals = () => {
     });
 
     const closeModal = () => {
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+    };
+
+    document.addEventListener("keydown", function(e) {
+      const key = e.key;
+      if (key === "Escape") {
         modal.style.display = "none";
         document.body.style.overflow = "";
-      };
+      }
+    });
 
     close.addEventListener("click", () => {
-        closeModal();
+      closeModal();
     });
     modal.addEventListener("click", e => {
       if (e.target === modal) {
@@ -36,8 +44,6 @@ const modals = () => {
     }, time);
   }
 
-  
-
   bindModal(
     ".popup_engineer_btn",
     ".popup_engineer",
@@ -45,7 +51,6 @@ const modals = () => {
   );
   bindModal(".phone_link", ".popup", ".popup_close");
   showModalByTime(".popup", 73000);
-  
 };
 
 export default modals;
