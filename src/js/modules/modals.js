@@ -1,11 +1,11 @@
 const modals = () => {
   function bindModal(triggerSelector, modalSelector, closeSelector) {
-    const trigger = document.querySelectorAll(triggerSelector),
-      modal = document.querySelector(modalSelector),
-      close = document.querySelector(closeSelector);
+    const triggers = document.querySelectorAll(triggerSelector);
+    const modal = document.querySelector(modalSelector);
+    const close = document.querySelector(closeSelector);
 
-    trigger.forEach(item => {
-      item.addEventListener("click", e => {
+    triggers.forEach(trigger => {
+      trigger.addEventListener("click", e => {
         if (e.target) {
           e.preventDefault();
         }
@@ -14,14 +14,17 @@ const modals = () => {
       });
     });
 
+    const closeModal = () => {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+      };
+
     close.addEventListener("click", () => {
-      modal.style.display = "none";
-      document.body.style.overflow = "";
+        closeModal();
     });
     modal.addEventListener("click", e => {
       if (e.target === modal) {
-        modal.style.display = "none";
-        document.body.style.overflow = "";
+        closeModal();
       }
     });
   }
@@ -33,6 +36,8 @@ const modals = () => {
     }, time);
   }
 
+  
+
   bindModal(
     ".popup_engineer_btn",
     ".popup_engineer",
@@ -40,6 +45,7 @@ const modals = () => {
   );
   bindModal(".phone_link", ".popup", ".popup_close");
   showModalByTime(".popup", 73000);
+  
 };
 
 export default modals;
