@@ -22,8 +22,7 @@ const modals = () => {
     document.addEventListener("keydown", function(e) {
       const key = e.key;
       if (key === "Escape") {
-        modal.style.display = "none";
-        document.body.style.overflow = "";
+        closeModal();
       }
     });
 
