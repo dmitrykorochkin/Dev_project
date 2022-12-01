@@ -1,11 +1,11 @@
 const modals = () => {
-  const bindModal = (triggerSelector, modalSelector, closeSelector) => {
-    const triggers = document.querySelectorAll(triggerSelector);
-    const modal = document.querySelector(modalSelector);
-    const close = document.querySelector(closeSelector);
+  const bindModal = (triggerSelector:string, modalSelector:string, closeSelector:string):void => {
+    const triggers:any = document.querySelectorAll(triggerSelector);
+    const modal:any = document.querySelector(modalSelector);
+    const close:any = document.querySelector(closeSelector);
 
-    triggers.forEach(trigger => {
-      trigger.addEventListener("click", e => {
+    triggers.forEach((trigger: any) => {
+      trigger.addEventListener("click", (e: any) => {
         if (e.target) {
           e.preventDefault();
         }
@@ -14,7 +14,7 @@ const modals = () => {
       });
     });
 
-    const closeModal = () => {
+    const closeModal:any = () => {
       modal.style.display = "none";
       document.body.style.overflow = "";
     };
@@ -29,16 +29,17 @@ const modals = () => {
     close.addEventListener("click", () => {
       closeModal();
     });
-    modal.addEventListener("click", e => {
+    modal.addEventListener("click", (e:any) => {
       if (e.target === modal) {
         closeModal();
       }
     });
   };
 
-  const showModalByTime = (selector, time) => {
+  const showModalByTime = (selector:string, time:number): void => {
     setTimeout(function() {
-      document.querySelector(selector).style.display = "block";
+      let selectorShowModal = document.querySelector(selector) as HTMLElement;
+      selectorShowModal.style.display = "block";
       document.body.style.overflow = "hidden";
     }, time);
   };
