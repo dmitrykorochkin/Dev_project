@@ -1,6 +1,6 @@
 import "./slider";
 import modals from "./modules/modals";
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () :void => {
     modals();
 });
