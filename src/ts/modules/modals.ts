@@ -1,21 +1,21 @@
-const modals = () => {
+const modals = (): void => {
   const bindModal = (triggerSelector:string, modalSelector:string, closeSelector:string):void => {
-    const triggers:any = document.querySelectorAll(triggerSelector);
-    const modal:any = document.querySelector(modalSelector);
-    const close:any = document.querySelector(closeSelector);
+    const triggers: NodeListOf<HTMLElement> = document.querySelectorAll(triggerSelector);
+    const modal: Element = document.querySelector(modalSelector);
+    const close: Element = document.querySelector(closeSelector);
 
-    triggers.forEach((trigger: any) => {
-      trigger.addEventListener("click", (e: any) => {
+    triggers.forEach((trigger: Element): void => {
+      trigger.addEventListener("click", (e: Event): void => {
         if (e.target) {
           e.preventDefault();
         }
-        modal.style.display = "block";
+        (modal as HTMLElement).style.display = "block";
         document.body.style.overflow = "hidden";
       });
     });
 
-    const closeModal:any = () => {
-      modal.style.display = "none";
+    const closeModal = (): void => {
+      (modal as HTMLElement).style.display = "none";
       document.body.style.overflow = "";
     };
 
@@ -29,7 +29,7 @@ const modals = () => {
     close.addEventListener("click", () => {
       closeModal();
     });
-    modal.addEventListener("click", (e:any) => {
+    modal.addEventListener("click", (e) => {
       if (e.target === modal) {
         closeModal();
       }
