@@ -19,18 +19,16 @@ const tabs = (headerSelector: string, tabSelector: string, contentSelector: stri
     showTabContent(0);
 
     header.addEventListener('click', (e: Event): void => {
-        const target: Element = e.target as Element;
+        const target: Element = e.target as HTMLElement;
         if (target.classList.contains(tabSelector.replace(/\./, ""))
-            || target.parentNode.classList.contains(tabSelector.replace(/\./, "")))
-
-                tabs.forEach((tab, i): void => {
-                    if(target == tab || target.parentNode == tab) {
-                        hideTabContent();
-                        showTabContent(i);
-                    }
-                })
-        
-        
+            || target.parentElement.classList.contains(tabSelector.replace(/\./, ""))) {
+            tabs.forEach((tab, i): void => {
+                if (target == tab || target.parentNode == tab) {
+                    hideTabContent();
+                    showTabContent(i);
+                }
+            })
+        }
     });
 };
 
