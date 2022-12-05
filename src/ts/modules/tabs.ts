@@ -1,4 +1,4 @@
-const tabs = (headerSelector: string, tabSelector: string, contentSelector: string, activeClass: string): void => {
+export const tabs = (headerSelector: string, tabSelector: string, contentSelector: string, activeClass: string): void => {
     const header: Element = document.querySelector(headerSelector);
     const tabs: NodeListOf<HTMLElement> = document.querySelectorAll(tabSelector);
     const contents: NodeListOf<HTMLElement> = document.querySelectorAll(contentSelector);
@@ -32,4 +32,3 @@ const tabs = (headerSelector: string, tabSelector: string, contentSelector: stri
     });
 };
 
-export default tabs

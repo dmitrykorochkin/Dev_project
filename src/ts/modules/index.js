@@ -1,3 +1,2 @@
-
-export { modals } from "./modals";
-export { tabs } from "./tabs";
+export { modals } from './modals.ts';
+export { tabs } from './tabs.ts';

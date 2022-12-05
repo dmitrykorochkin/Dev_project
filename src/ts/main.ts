@@ -2,19 +2,21 @@ import "./slider";
 import { modals, tabs } from "./modules";
 
 
-window.addEventListener('DOMContentLoaded', () :void => {
+window.addEventListener('DOMContentLoaded', (): void => {
+
     modals();
+
     tabs({
-    headerSelector: '.glazing_slider', 
-    tabSelector: '.glazing_block', 
-    contentSelector: '.glazing_content', 
-    activeClass: 'active'
+        headerSelector: '.glazing_slider',
+        tabSelector: '.glazing_block',
+        contentSelector: '.glazing_content',
+        activeClass: 'active'
     });
 
     tabs({
-        headerSelector:'.decoration_slider', 
-        tabSelector: '.no_click', 
-        contentSelector: '.decoration_content > div > div', 
+        headerSelector: '.decoration_slider',
+        tabSelector: '.no_click',
+        contentSelector: '.decoration_content > div > div',
         activeClass: 'after_click'
     });
 });
