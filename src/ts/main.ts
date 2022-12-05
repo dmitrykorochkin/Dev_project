@@ -1,9 +1,20 @@
 import "./slider";
-import { modals, tabs } from "./modules/index";
+import { modals, tabs } from "./modules";
 
 
 window.addEventListener('DOMContentLoaded', () :void => {
     modals();
-    tabs('.glazing_slider', '.glazing_block', '.glazing_content', 'active');
-    tabs('.decoration_slider', '.no_click', '.decoration_content > div > div', 'after_click');
+    tabs({
+    headerSelector: '.glazing_slider', 
+    tabSelector: '.glazing_block', 
+    contentSelector: '.glazing_content', 
+    activeClass: 'active'
+    });
+
+    tabs({
+        headerSelector:'.decoration_slider', 
+        tabSelector: '.no_click', 
+        contentSelector: '.decoration_content > div > div', 
+        activeClass: 'after_click'
+    });
 });
