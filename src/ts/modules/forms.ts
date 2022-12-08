@@ -14,10 +14,11 @@ const form = (): void => {
         success: 'Спасибо! Скоро мы с вами свяжемся',
         failure: 'Что то пошло не так...'
     }
+    
 
     const postData = async (url: string, data: string): Promise<string> => {
         document.querySelector('.status').textContent = message.loading;
-        let res = await fetch(url, {
+        const res = await fetch(url, {
             method: 'POST',
             body: data
         });
@@ -34,7 +35,7 @@ const form = (): void => {
     forms.forEach(form => {
         form.addEventListener('submit', (e: Event) => {
             e.preventDefault();
-            let statusMessage: Element = document.createElement('div');
+            const statusMessage: Element = document.createElement('div');
             statusMessage.classList.add('status');
             form.appendChild(statusMessage);
 
