@@ -1,6 +1,13 @@
 const form = (): void => {
     const forms: NodeListOf<HTMLFormElement> = document.querySelectorAll('form');
     const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
+    const phoneInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="user_phone"]');
+
+    phoneInputs.forEach(input => {
+        input.addEventListener('input', (): void => {
+            input.value = input.value.replace(/\D/, '');
+        });
+    })
 
     const message: MessageType = {
         loading: 'Загрузка...',
@@ -18,7 +25,7 @@ const form = (): void => {
         return await res.text();
     }
 
-    const clearInputs = (): void=> {
+    const clearInputs = (): void => {
         inputs.forEach(input => {
             input.value = '';
         })
