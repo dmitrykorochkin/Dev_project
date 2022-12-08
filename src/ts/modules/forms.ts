@@ -31,9 +31,9 @@ const form = (): void => {
             statusMessage.classList.add('status');
             form.appendChild(statusMessage);
 
-            const formData = new FormData(form);
+            const formData: any = new FormData(form);
 
-            postData('assets/server.php', formData);
+            postData('assets/server.php', formData)
                 .then(res => {
                     console.log(res);
                     statusMessage.textContent = message.success;
@@ -47,5 +47,5 @@ const form = (): void => {
                 })
         })
     })
-    
+}
 export default form
