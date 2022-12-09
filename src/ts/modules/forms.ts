@@ -51,7 +51,7 @@ const form = (): void => {
                     console.log(res);
                     statusMessage.textContent = message.success;
                 })
-                .catch((): void => statusMessage.textContent = message.failure)
+                .catch((): any => statusMessage.textContent = message.failure)
                 .finally((): void => {
                     clearInputs();
                     setTimeout(() => {
