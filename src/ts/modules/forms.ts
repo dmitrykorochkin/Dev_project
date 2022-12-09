@@ -9,10 +9,15 @@ const form = (): void => {
         });
     })
 
-    enum message {
-        loading = 'Загрузка...',
-        success =  'Спасибо! Скоро мы с вами свяжемся',
-        failure = 'Что то пошло не так...'
+    type MessageType = {
+        loading: string,
+        success: string,
+        failure: string
+    }
+    const message: MessageType = {
+        loading:'Загрузка...',
+        success: 'Спасибо! Скоро мы с вами свяжемся',
+        failure: 'Что то пошло не так...'
     } 
     
 
