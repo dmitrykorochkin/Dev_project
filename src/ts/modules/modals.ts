@@ -1,5 +1,5 @@
 export const modals = (): void => {
-  const bindModal = (triggerSelector:string, modalSelector:string, closeSelector:string):void => {
+  const bindModal = (triggerSelector:string, modalSelector:string, closeSelector:string, closeClickOverlay = true):void => {
     const triggers: NodeListOf<HTMLElement> = document.querySelectorAll(triggerSelector);
     const modal: Element = document.querySelector(modalSelector);
     const close: Element = document.querySelector(closeSelector);
@@ -39,7 +39,11 @@ export const modals = (): void => {
       closeModal();
     });
     modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
+      
+      if (e.target === modal && closeClickOverlay) {
+        windows.forEach(window => {
+          (window as HTMLElement).style.display = "none"
+        })
         closeModal();
       }
     });
@@ -68,7 +72,19 @@ export const modals = (): void => {
     ".popup_calc_btn",
     ".popup_calc",
     ".popup_calc_close"
-  )
+  );
+  bindModal(
+    ".popup_calc_button",
+    ".popup_calc_profile",
+    ".popup_calc_profile_close",
+    false
+  ),
+  bindModal(
+    ".popup_calc_profile_button",
+    ".popup_calc_end",
+    ".popup_calc_end_close",
+    false
+    )
   showModalByTime(".popup", 73000);
 };
 
