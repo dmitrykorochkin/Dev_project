@@ -3,13 +3,15 @@ export const tabs =
         headerSelector,
         tabSelector, 
         contentSelector, 
-        activeClass 
+        activeClass,
+        display = 'block'
     }: 
     {
         headerSelector: string,
         tabSelector: string,
         contentSelector: string,
-        activeClass: string
+        activeClass: string,
+        display: string,
     }): void => {
 
         const header: Element = document.querySelector(headerSelector)
@@ -25,7 +27,7 @@ export const tabs =
             })
         }
         const showTabContent = (i: number): void => {
-            contents[i].style.display = 'block'
+            contents[i].style.display = display
             tabs[i].classList.add(activeClass);
         }
         hideTabContent();

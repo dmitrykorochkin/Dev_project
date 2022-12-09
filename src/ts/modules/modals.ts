@@ -3,12 +3,18 @@ export const modals = (): void => {
     const triggers: NodeListOf<HTMLElement> = document.querySelectorAll(triggerSelector);
     const modal: Element = document.querySelector(modalSelector);
     const close: Element = document.querySelector(closeSelector);
+    const windows: NodeListOf<Element> = document.querySelectorAll('[data-modal]');
 
     triggers.forEach((trigger: Element): void => {
       trigger.addEventListener("click", (e: Event): void => {
         if (e.target) {
           e.preventDefault();
         }
+
+        windows.forEach(window => {
+          (window as HTMLElement).style.display = "none"
+        });
+
         (modal as HTMLElement).style.display = "block";
         document.body.style.overflow = "hidden";
       });
@@ -27,6 +33,9 @@ export const modals = (): void => {
     });
 
     close.addEventListener("click", () => {
+        windows.forEach(window => {
+          (window as HTMLElement).style.display = "none"
+        })
       closeModal();
     });
     modal.addEventListener("click", (e) => {
