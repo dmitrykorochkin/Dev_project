@@ -5,6 +5,8 @@ import { modals, tabs } from "./modules";
 
 window.addEventListener('DOMContentLoaded', (): void => {
 
+    const modalState = {}
+
     modals();
 
     tabs({
