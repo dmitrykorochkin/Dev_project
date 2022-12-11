@@ -1,13 +1,11 @@
+import checkNumberInputs from './checkNumberInputs'
+
 const form = (): void => {
     const forms: NodeListOf<HTMLFormElement> = document.querySelectorAll('form');
     const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
-    const phoneInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="user_phone"]');
 
-    phoneInputs.forEach(input => {
-        input.addEventListener('input', (): void => {
-            input.value = input.value.replace(/\D/, '');
-        });
-    })
+
+    checkNumberInputs('input[name="user_phone"]')
 
     type MessageType = {
         loading: string,
