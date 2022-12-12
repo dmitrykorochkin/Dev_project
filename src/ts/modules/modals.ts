@@ -20,6 +20,12 @@ export const modals = (): void => {
       });
     });
 
+    const windowModal = (): void => {
+      windows.forEach(window => {
+        (window as HTMLElement).style.display = "none"
+      })
+    }
+
     const closeModal = (): void => {
       (modal as HTMLElement).style.display = "none";
       document.body.style.overflow = "";
@@ -33,17 +39,13 @@ export const modals = (): void => {
     });
 
     close.addEventListener("click", () => {
-        windows.forEach(window => {
-          (window as HTMLElement).style.display = "none"
-        })
+      windowModal();
       closeModal();
     });
     modal.addEventListener("click", (e) => {
       
       if (e.target === modal && closeClickOverlay) {
-        windows.forEach(window => {
-          (window as HTMLElement).style.display = "none"
-        })
+        windowModal();
         closeModal();
       }
     });

@@ -1,4 +1,4 @@
-const checkNumberInputs = (selector) : void => {
+const checkNumberInputs = (selector: any) : void => {
     const numberInputs = document.querySelectorAll(selector);
 
     numberInputs.forEach((numberInput) => {

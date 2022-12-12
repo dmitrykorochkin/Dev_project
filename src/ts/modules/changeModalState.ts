@@ -1,18 +1,18 @@
 import checkNumberInputs from './checkNumberInputs'
 
-const changeModalState = (state) => {
-    const windowForms = document.querySelectorAll('.balcon_icons_img');
-    const windowWidth = document.querySelectorAll('#width');
-    const windowHeight = document.querySelectorAll('#heigth');
-    const windowType = document.querySelectorAll('#view_type');
-    const windowProfile = document.querySelectorAll('.checkbox');
+const changeModalState = (state : any) : void=> {
+    const windowForms : NodeListOf<HTMLElement> = document.querySelectorAll('.balcon_icons_img');
+    const windowWidth : NodeListOf<HTMLElement> = document.querySelectorAll('#width');
+    const windowHeight : NodeListOf<HTMLElement> = document.querySelectorAll('#heigth');
+    const windowType : NodeListOf<HTMLElement> = document.querySelectorAll('#view_type');
+    const windowProfile : NodeListOf<HTMLElement> = document.querySelectorAll('.checkbox');
 
     checkNumberInputs('#width')
     checkNumberInputs('#heigth')
 
 
-    const bindActionToElems = (e, elem, prop) => {
-        elem.forEach((item, i) => {
+    const bindActionToElems = (e, elem, prop) : void => {
+        elem.forEach((item, i): void => {
             item.addEventListener(e, () => {
                 switch(item.nodeName) {
                     case 'SPAN' :
@@ -21,13 +21,19 @@ const changeModalState = (state) => {
                         break;
                     case 'INPUT':
                         if(item.getAttribute('type') === 'checkbox'){
-                            console.log('checkbox');
+                            i === 0 ? state[prop] = 'Холодное' : state[prop] = 'Теплое';
+                            elem.forEach((box, j) => {
+                                box.checked = false;
+                                if(i == j) {
+                                    box.checked = true;
+                                }
+                            })
                         } else {
-                            console.log('input');
+                            state[prop] = item.value;
                         }
                         break
                     case 'SELECT' :
-                        console.log('select');
+                        state[prop] = item.value;
                         break
                 }
             });
