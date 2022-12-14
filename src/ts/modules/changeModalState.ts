@@ -11,8 +11,8 @@ const changeModalState = (state: any): void => {
     checkNumberInputs('#heigth')
 
 
-    const bindActionToElems = (e, elem, prop): void => {
-        elem.forEach((item, i): void => {
+    const bindActionToElems = (e: any, elem:any, prop:any): void => {
+        elem.forEach((item:any, i:number): void => {
             item.addEventListener(e, () => {
                 switch (item.nodeName) {
                     case 'SPAN':
@@ -21,7 +21,7 @@ const changeModalState = (state: any): void => {
                     case 'INPUT':
                         if (item.getAttribute('type') === 'checkbox') {
                             state[prop] = i === 0 ? 'Холодное' : 'Теплое';
-                            elem.forEach((box, j) => {
+                            elem.forEach((box: any, j: number) => {
                                 box.checked = false;
                                 if (i == j) {
                                     box.checked = true;

@@ -13,7 +13,7 @@ gulp.task("copy-html", () => {
     .pipe(gulp.dest(dist))
     .pipe(browsersync.stream());
 });
-
+ 
 gulp.task("build-ts", () => {
   return gulp
     .src("./src/ts/main.ts")
