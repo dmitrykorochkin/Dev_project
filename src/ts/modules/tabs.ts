@@ -11,7 +11,7 @@ export const tabs =
         tabSelector: string,
         contentSelector: string,
         activeClass: string,
-        display: string
+        display?: string
     }): void => {
 
         const header: Element = document.querySelector(headerSelector)
