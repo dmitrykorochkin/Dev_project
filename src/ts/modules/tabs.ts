@@ -5,13 +5,13 @@ export const tabs =
         contentSelector, 
         activeClass,
         display = 'block'
-    }: 
+    }:
     {
         headerSelector: string,
         tabSelector: string,
         contentSelector: string,
         activeClass: string,
-        display: string,
+        display: string
     }): void => {
 
         const header: Element = document.querySelector(headerSelector)

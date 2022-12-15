@@ -14,14 +14,16 @@ window.addEventListener('DOMContentLoaded', (): void => {
         headerSelector: '.glazing_slider',
         tabSelector: '.glazing_block',
         contentSelector: '.glazing_content',
-        activeClass: 'active'
+        activeClass: 'active',
+        display: undefined
     });
 
     tabs({
         headerSelector: '.decoration_slider',
         tabSelector: '.no_click',
         contentSelector: '.decoration_content > div > div',
-        activeClass: 'after_click'
+        activeClass: 'after_click',
+        display: undefined
     });
     tabs({        
         headerSelector: '.balcon_icons',
