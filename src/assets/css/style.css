@@ -1030,9 +1030,12 @@ textarea:focus {
   
 }
 
-input, button, a {
+input:focus-visible, 
+button:focus-visible, 
+a:focus-visible {
   outline: solid #000000;
 }
+
 
 .popup_calc_profile_content .checkbox-custom {
   position: relative;
@@ -1040,6 +1043,9 @@ input, button, a {
   height: 22px;
   border: 2px solid #ccc;
   border-radius: 3px;
+}
+span .checkbox-custom:focus-visible {
+  outline: solid  #000000;
 }
 
 .popup_calc_profile_content .checkbox-custom,
