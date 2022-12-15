@@ -1,13 +1,11 @@
-const form = (): void => {
+import checkNumberInputs from './checkNumberInputs'
+
+const form = (state: any): void => {
     const forms: NodeListOf<HTMLFormElement> = document.querySelectorAll('form');
     const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
-    const phoneInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="user_phone"]');
 
-    phoneInputs.forEach(input => {
-        input.addEventListener('input', (): void => {
-            input.value = input.value.replace(/\D/, '');
-        });
-    })
+
+    checkNumberInputs('input[name="user_phone"]')
 
     type MessageType = {
         loading: string,
@@ -45,6 +43,11 @@ const form = (): void => {
             form.appendChild(statusMessage);
 
             const formData: any = new FormData(form);
+            if(form.getAttribute('data-calc') === 'end') {
+                for (let key in state) {
+                    formData.append(key, state[key]);
+                }
+            }
 
             postData('assets/server.php', formData)
                 .then(res => {
