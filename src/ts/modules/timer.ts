@@ -25,7 +25,7 @@ const timer = (id: number | string, deadline: string | number): void => {
     }
 
     const setClock = (selector: any, endtime: any): void => {
-        const timer: NodeListOf<HTMLElement> = document.querySelector(selector);
+        const timer: any = document.querySelector(selector);
         const days: any = timer.querySelector('#days');
         const hours: any = timer.querySelector('#hours');
         const minuts: any = timer.querySelector('#minutes');
@@ -33,7 +33,7 @@ const timer = (id: number | string, deadline: string | number): void => {
         const timeInterval = setInterval(updateClock, 1000);
 
         function updateClock() {
-            const time = getTimerRemaning(endtime);
+            const time: any= getTimerRemaning(endtime);
 
             days.textContent = addZero(time.days);
             hours.textContent = addZero(time.hours);
