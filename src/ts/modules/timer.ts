@@ -8,7 +8,7 @@ const timer = (id: number | string, deadline: string | number): void => {
         }
     }
 
-    const getTimerRemaning = (endtime: any): object => {
+    const getTimerRemaning = (endtime: any): any => {
         const time: number = Date.parse(endtime) - Date.parse(new Date());
         const seconds: number = Math.floor((time / 1000) % 60);
         const minuts: number = Math.floor((time / 1000 / 60) % 60);
@@ -28,7 +28,7 @@ const timer = (id: number | string, deadline: string | number): void => {
         const timer: NodeListOf<HTMLElement> = document.querySelector(selector);
         const days: any = timer.querySelector('#days');
         const hours: any = timer.querySelector('#hours');
-        const minuts: any = timer.querySelector('#minuts');
+        const minuts: any = timer.querySelector('#minutes');
         const seconds: any = timer.querySelector('#seconds');
         const timeInterval = setInterval(updateClock, 1000);
 
