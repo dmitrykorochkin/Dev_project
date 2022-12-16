@@ -1,7 +1,7 @@
-const timer = (id: number, deadline: number): void => {
+const timer = (id: number | string, deadline: string | number): void => {
 
     const addZero = (num: number): number | string => {
-        if(num <= 9) {
+        if (num <= 9) {
             return '0' + num
         } else {
             return num;
@@ -16,20 +16,20 @@ const timer = (id: number, deadline: number): void => {
         const days: number = Math.floor((time / (1000 * 60 * 60 * 24)));
 
         return {
-            'total' : time,
+            'total': time,
             'days': days,
-            'hours' : hours,
-            'minutes': minuts,
+            'hours': hours,
+            'minuts': minuts,
             'seconds': seconds
         };
     }
 
     const setClock = (selector: any, endtime: any): void => {
         const timer: NodeListOf<HTMLElement> = document.querySelector(selector);
-        const days: NodeListOf<HTMLElement> = timer.querySelector('#days');
-        const hours: NodeListOf<HTMLElement> = timer.querySelector('#hours');
-        const minutes: NodeListOf<HTMLElement> = timer.querySelector('#minutes');
-        const seconds: NodeListOf<HTMLElement> = timer.querySelector('#seconds');
+        const days: any = timer.querySelector('#days');
+        const hours: any = timer.querySelector('#hours');
+        const minuts: any = timer.querySelector('#minuts');
+        const seconds: any = timer.querySelector('#seconds');
         const timeInterval = setInterval(updateClock, 1000);
 
         function updateClock() {
@@ -37,17 +37,17 @@ const timer = (id: number, deadline: number): void => {
 
             days.textContent = addZero(time.days);
             hours.textContent = addZero(time.hours);
-            minutes.textContent = addZero(time.minutes);
+            minuts.textContent = addZero(time.minuts);
             seconds.textContent = addZero(time.seconds);
 
-            if(time.total <= 0) {
+            if (time.total <= 0) {
                 days.textContent = "00";
                 hours.textContent = "00";
-                minutes.textContent = "00";
+                minuts.textContent = "00";
                 seconds.textContent = "00";
 
                 clearInterval(timeInterval);
-    
+
             }
         }
     };

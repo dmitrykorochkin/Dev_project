@@ -2,11 +2,13 @@ import "./slider";
 import forms from "./modules/forms";
 import { modals, tabs } from "./modules";
 import changeModalState from './modules/changeModalState';
+import timer from './modules/timer'
 
 
 window.addEventListener('DOMContentLoaded', (): void => {
 
     const modalState = {};
+    let deadline = '2022-12-31'
     changeModalState(modalState);
     modals();
 
@@ -30,4 +32,5 @@ window.addEventListener('DOMContentLoaded', (): void => {
         display: 'inline-block'
     })
     forms(modalState);
+    timer('.container1', deadline)
 });
