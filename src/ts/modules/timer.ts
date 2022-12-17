@@ -1,12 +1,6 @@
 const timer = (id: string, deadline: string): void => {
 
-    const addZero = (num: number): number | string => {
-        if (num <= 9) {
-            return '0' + num
-        } else {
-            return num;
-        }
-    }
+    const addZero = (num: number): string => num <= 9 ? `0${num}` : String(num);
     interface ITimer {
         total: number;
         seconds: number;
@@ -16,7 +10,7 @@ const timer = (id: string, deadline: string): void => {
     }
 
     const getTimerRemaning = (endtime: string): ITimer => {
-        const time: number = Date.parse(endtime) - Date.parse(new Date());
+        const time: number = Date.parse(endtime) - Date.parse(String(new Date()));
         const seconds: number = Math.floor((time / 1000) % 60);
         const minutes: number = Math.floor((time / 1000 / 60) % 60);
         const hours: number = Math.floor((time / (1000 * 60 * 60)) % 24);
