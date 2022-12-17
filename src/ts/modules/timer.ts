@@ -1,4 +1,4 @@
-const timer = (id: string, deadline: string): void => {
+export const timer = (id: string, deadline: string): void => {
 
     const addZero = (num: number): string => num <= 9 ? `0${num}` : String(num);
     interface ITimer {
