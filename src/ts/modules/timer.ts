@@ -1,4 +1,4 @@
-const timer = (id: number | string, deadline: string | number): void => {
+const timer = (id: string, deadline: string): void => {
 
     const addZero = (num: number): number | string => {
         if (num <= 9) {
@@ -7,11 +7,18 @@ const timer = (id: number | string, deadline: string | number): void => {
             return num;
         }
     }
+    interface ITimer {
+        total: number;
+        seconds: number;
+        minutes: number;
+        hours: number;
+        days: number;
+    }
 
-    const getTimerRemaning = (endtime: any): any => {
+    const getTimerRemaning = (endtime: string): ITimer => {
         const time: number = Date.parse(endtime) - Date.parse(new Date());
         const seconds: number = Math.floor((time / 1000) % 60);
-        const minuts: number = Math.floor((time / 1000 / 60) % 60);
+        const minutes: number = Math.floor((time / 1000 / 60) % 60);
         const hours: number = Math.floor((time / (1000 * 60 * 60)) % 24);
         const days: number = Math.floor((time / (1000 * 60 * 60 * 24)));
 
@@ -19,31 +26,31 @@ const timer = (id: number | string, deadline: string | number): void => {
             'total': time,
             'days': days,
             'hours': hours,
-            'minuts': minuts,
+            'minutes': minutes,
             'seconds': seconds
         };
     }
 
-    const setClock = (selector: any, endtime: any): void => {
+    const setClock = (selector: string, endtime: string): void => {
         const timer: any = document.querySelector(selector);
         const days: any = timer.querySelector('#days');
         const hours: any = timer.querySelector('#hours');
-        const minuts: any = timer.querySelector('#minutes');
+        const minutes: any = timer.querySelector('#minutes');
         const seconds: any = timer.querySelector('#seconds');
         const timeInterval = setInterval(updateClock, 1000);
 
         function updateClock() {
-            const time: any= getTimerRemaning(endtime);
+            const time: ITimer = getTimerRemaning(endtime);
 
             days.textContent = addZero(time.days);
             hours.textContent = addZero(time.hours);
-            minuts.textContent = addZero(time.minuts);
+            minutes.textContent = addZero(time.minutes);
             seconds.textContent = addZero(time.seconds);
 
             if (time.total <= 0) {
                 days.textContent = "00";
                 hours.textContent = "00";
-                minuts.textContent = "00";
+                minutes.textContent = "00";
                 seconds.textContent = "00";
 
                 clearInterval(timeInterval);
