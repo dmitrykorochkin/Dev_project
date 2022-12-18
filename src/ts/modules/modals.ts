@@ -1,9 +1,10 @@
 export const modals = (): void => {
-  const bindModal = (triggerSelector:string, modalSelector:string, closeSelector:string, closeClickOverlay = true):void => {
+  const bindModal = (triggerSelector: string, modalSelector: string, closeSelector: string, closeClickOverlay = true): void => {
     const triggers: NodeListOf<HTMLElement> = document.querySelectorAll(triggerSelector);
     const modal: Element = document.querySelector(modalSelector);
     const close: Element = document.querySelector(closeSelector);
     const windows: NodeListOf<Element> = document.querySelectorAll('[data-modal]');
+    const scroll: number = calcScroll()
 
     triggers.forEach((trigger: Element): void => {
       trigger.addEventListener("click", (e: Event): void => {
@@ -17,6 +18,7 @@ export const modals = (): void => {
 
         (modal as HTMLElement).style.display = "block";
         document.body.style.overflow = "hidden";
+        document.body.style.marginRight = `${scroll}px`
       });
     });
 
@@ -31,7 +33,11 @@ export const modals = (): void => {
       document.body.style.overflow = "";
     };
 
-    document.addEventListener("keydown", function(e) {
+    const hiddenScroll = (): void => {
+      document.body.style.marginRight = `0px`
+    }
+
+    document.addEventListener("keydown", function (e) {
       const key = e.key;
       if (key === "Escape") {
         closeModal();
@@ -41,23 +47,43 @@ export const modals = (): void => {
     close.addEventListener("click", () => {
       windowModal();
       closeModal();
+      hiddenScroll();
+      
     });
     modal.addEventListener("click", (e) => {
-      
+
       if (e.target === modal && closeClickOverlay) {
         windowModal();
         closeModal();
+        hiddenScroll();
       }
     });
   };
 
-  const showModalByTime = (selector:string, time:number): void => {
-    setTimeout(function() {
+  const showModalByTime = (selector: string, time: number): void => {
+    setTimeout(function () {
       let selectorShowModal = document.querySelector(selector) as HTMLElement;
       selectorShowModal.style.display = "block";
       document.body.style.overflow = "hidden";
     }, time);
   };
+
+  const calcScroll = (): number => {
+
+    const div: HTMLElement = document.createElement('div');
+
+    div.style.width = '50px';
+    div.style.height = '50px';
+    div.style.overflowY = 'scroll';
+    div.style.visibility = 'hidden';
+
+    document.body.appendChild(div);
+    const scrollWidth: number = div.offsetWidth - div.clientWidth;
+    div.remove()
+
+    return scrollWidth
+
+  }
 
   bindModal(
     ".popup_engineer_btn",
@@ -65,8 +91,8 @@ export const modals = (): void => {
     ".popup_engineer .popup_close",
   );
   bindModal(
-    ".phone_link", 
-    ".popup", 
+    ".phone_link",
+    ".popup",
     ".popup_close"
   );
 
@@ -81,11 +107,11 @@ export const modals = (): void => {
     ".popup_calc_profile_close",
     false
   ),
-  bindModal(
-    ".popup_calc_profile_button",
-    ".popup_calc_end",
-    ".popup_calc_end_close",
-    false
+    bindModal(
+      ".popup_calc_profile_button",
+      ".popup_calc_end",
+      ".popup_calc_end_close",
+      false
     )
   showModalByTime(".popup", 73000);
 };
