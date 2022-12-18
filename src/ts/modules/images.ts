@@ -15,11 +15,11 @@ export const images = (): void => {
     workSection.addEventListener('click', (e: Event): void => {
         e.preventDefault()
 
-        const target = <HTMLElement>e.target;
+        const target = e.target as HTMLElement;
 
         if(target && target.classList.contains('preview')) {
             imgPopup.style.display = 'flex'
-            const path = target.parentNode.getAttribute('href');
+            const path  =  target.parentElement.getAttribute('href');
             bigImage.setAttribute('src', path);
         }
         if((target && target).matches('div.popup')) {
