@@ -2,7 +2,8 @@ import "./slider";
 import forms from "./modules/forms";
 import { modals, tabs } from "./modules";
 import changeModalState from './modules/changeModalState';
-import timer from './modules/timer'
+import timer from './modules/timer';
+import images from './modules/images'
 
 
 window.addEventListener('DOMContentLoaded', (): void => {
@@ -11,7 +12,7 @@ window.addEventListener('DOMContentLoaded', (): void => {
     const deadline = '2022-12-31'
     changeModalState(modalState);
     modals();
-
+    
     tabs({
         headerSelector: '.glazing_slider',
         tabSelector: '.glazing_block',
@@ -32,5 +33,6 @@ window.addEventListener('DOMContentLoaded', (): void => {
         display: 'inline-block'
     })
     forms(modalState);
-    timer('.container1', deadline)
+    timer('.container1', deadline);
+    images();
 });
