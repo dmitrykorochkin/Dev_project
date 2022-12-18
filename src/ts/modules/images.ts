@@ -22,7 +22,7 @@ export const images = (): void => {
             const path  =  target.parentElement.getAttribute('href');
             bigImage.setAttribute('src', path);
         }
-        if((target.matches)('div.popup')) {
+        if(target && target.matches('div.popup')) {
             imgPopup.style.display = 'none'
         }
     })
