@@ -10,7 +10,7 @@ export const images = (): void => {
     imgPopup.style.alignItems = 'center';
     imgPopup.style.display = 'none';
 
-    imgPopup.appendChild(imgPopup)
+    imgPopup.appendChild(bigImage)
 
     workSection.addEventListener('click', (e: Event): void => {
         e.preventDefault()

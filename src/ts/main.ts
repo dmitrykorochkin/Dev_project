@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', (): void => {
     const deadline = '2022-12-31'
     changeModalState(modalState);
     modals();
-    images();
+    
     tabs({
         headerSelector: '.glazing_slider',
         tabSelector: '.glazing_block',
@@ -33,5 +33,6 @@ window.addEventListener('DOMContentLoaded', (): void => {
         display: 'inline-block'
     })
     forms(modalState);
-    timer('.container1', deadline)
+    timer('.container1', deadline);
+    images();
 });
