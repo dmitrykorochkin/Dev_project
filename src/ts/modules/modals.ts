@@ -48,7 +48,7 @@ export const modals = (): void => {
       windowModal();
       closeModal();
       hiddenScroll();
-      
+
     });
     modal.addEventListener("click", (e) => {
 
